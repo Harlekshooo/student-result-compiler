@@ -21,6 +21,8 @@ def calculate_grade(average):
     else:
         return "F"
 
+
+#OPTION 1: ---ADD STUDENTS---
 def add_students():
     while True:
         student_name = input("Student name: ")
@@ -66,6 +68,7 @@ def add_students():
     print(f"{student_name} - {average} - {grade}")
 
 
+#OPTION 2: ---CLASS SUMMARY---
 def class_summary():
     student_averages = []
     for student in students:
@@ -91,6 +94,9 @@ def class_summary():
             print(f"Lowest: {student['name']} ({lowest_average})")
             
 
+
+
+#OPTION 3: ---SAVE RESULTS---
 def save_results():
         
     filename = "results.csv"
@@ -105,7 +111,7 @@ def save_results():
     
     headers = ["name", "average", "grade"] # The header of the student data.
 
-    with open("results.csv", "w", newline='') as f:
+    with open("results.csv", "w", newline='') as f:#newline helps prevent blank rows from being created
         writer = csv.DictWriter(f, fieldnames=headers) # This registers the column headers and links the writer to the {filename}
         writer.writeheader() # This writes the top header directly into the file
         writer.writerows(students)# This fills in all the student data into the rows
@@ -118,6 +124,7 @@ def save_results():
         return
 
 
+# ---MAIN CONTAINER---
 def container():
     while True:
         print("===Student Result Processor===")
@@ -145,5 +152,6 @@ def container():
             continue
 
         break
+
 
 container()
